@@ -6,7 +6,7 @@ export const targetCrops = [
 export const fireblightStatus = [
   {
     id: 1,
-    titleKo: "꽃 감염위험도",
+    titleKo: "꽃 감염 위험도",
     title: "bir",
     statusList: [
       {
@@ -32,8 +32,10 @@ export const fireblightStatus = [
         titleKo: "기간 아님/해당 없음",
         color: "#EAEAEA",
       },
-      { id: 202, value: 1, titleKo: "출현", color: "#A768AE" },
-      { id: 203, value: 2, titleKo: "출현 없음", color: "#008000" },
+      // { id: 202, value: 1, titleKo: "출현", color: "#A768AE" },
+      // { id: 203, value: 2, titleKo: "출현 없음", color: "#008000" },
+      { id: 202, value: 1, titleKo: "출현 가능성 높음", color: "#A768AE" },
+      { id: 203, value: 2, titleKo: "출현 가능성 낮음", color: "#008000" },
     ],
   },
   {
@@ -42,8 +44,10 @@ export const fireblightStatus = [
     title: "cms",
     statusList: [
       { id: 301, value: 0, titleKo: "기간 아님/해당 없음", color: "#EAEAEA" },
-      { id: 302, value: 1, titleKo: "출현", color: "#A768AE" },
-      { id: 303, value: 2, titleKo: "출현 없음", color: "#008000" },
+      // { id: 302, value: 1, titleKo: "출현", color: "#A768AE" },
+      // { id: 303, value: 2, titleKo: "출현 없음", color: "#008000" },
+      { id: 302, value: 1, titleKo: "출현 가능성 높음", color: "#A768AE" },
+      { id: 303, value: 2, titleKo: "출현 가능성 낮음", color: "#008000" },
     ],
   },
   {
@@ -57,8 +61,10 @@ export const fireblightStatus = [
         titleKo: "기간 아님/해당 없음",
         color: "#EAEAEA",
       },
-      { id: 402, value: 1, titleKo: "출현", color: "#A768AE" },
-      { id: 403, value: 2, titleKo: "출현 없음", color: "#008000" },
+      // { id: 402, value: 1, titleKo: "출현", color: "#A768AE" },
+      // { id: 403, value: 2, titleKo: "출현 없음", color: "#008000" },
+      { id: 402, value: 1, titleKo: "출현 가능성 높음", color: "#A768AE" },
+      { id: 403, value: 2, titleKo: "출현 가능성 낮음", color: "#008000" },
     ],
   },
   {
@@ -72,8 +78,10 @@ export const fireblightStatus = [
         titleKo: "기간 아님/해당 없음",
         color: "#EAEAEA",
       },
-      { id: 402, value: 1, titleKo: "출현", color: "#A768AE" },
-      { id: 403, value: 2, titleKo: "출현 없음", color: "#008000" },
+      // { id: 402, value: 1, titleKo: "출현", color: "#A768AE" },
+      // { id: 403, value: 2, titleKo: "출현 없음", color: "#008000" },
+      { id: 402, value: 1, titleKo: "출현 가능성 높음", color: "#A768AE" },
+      { id: 403, value: 2, titleKo: "출현 가능성 낮음", color: "#008000" },
     ],
   },
 ];

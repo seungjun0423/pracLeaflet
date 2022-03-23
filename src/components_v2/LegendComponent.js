@@ -45,14 +45,14 @@ const LegendComponent = (props) => {
   if (!data) {
     return (
       <Wrapper>
-        <LegendTitle>마커 색상 정보</LegendTitle>
+        <LegendTitle>지점 색상 범례</LegendTitle>
         <EmptyWrapper>-</EmptyWrapper>
       </Wrapper>
     );
   }
   return (
     <Wrapper>
-      <LegendTitle>마커 색상 정보</LegendTitle>
+      <LegendTitle>지점 색상 범례</LegendTitle>
       {data.map((item) => (
         <ColorWrapper key={item.id}>
           <Color color={item.color} />

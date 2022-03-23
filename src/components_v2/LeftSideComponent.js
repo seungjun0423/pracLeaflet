@@ -20,11 +20,12 @@ const LeftSideComponent = (props) => {
         과수화상병 예측<small>/</small>
         {targetCrop ? targetCrop.titleKo : "-"}
         <small>/</small>
-        {targetDate
+        {targetYear ? targetYear : "-"}
+        {/* {targetDate
           ? new Date(targetDate).toISOString().slice(0, 10)
           : targetYear
           ? targetYear
-          : "-"}
+          : "-"} */}
         <small className="title-small">
           {`지점 선택은 최대 ${
             maxStationCount > 0 ? maxStationCount : "-"
@@ -39,9 +40,9 @@ const LeftSideComponent = (props) => {
               <p className="guide-text">
                 선택된 지점이 없습니다.
                 <br />
-                왼쪽 지도에서 지점을 선택하여 주세요.
+                오른쪽 지도에서 지점을 선택하여 주세요.
                 <br />
-                <small>(최대 4개까지 가능합니다.)</small>
+                <small>(최대 4곳까지 선택 가능합니다.)</small>
               </p>
             ) : (
               selectedSpots.map((stationFbData) => (
