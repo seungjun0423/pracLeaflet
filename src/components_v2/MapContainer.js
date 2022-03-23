@@ -43,6 +43,7 @@ const MapContainer = (props) => {
             : [35.9078, 128.9]
         }
         zoom={targetProvince && targetProvince.zoom ? targetProvince.zoom : 11}
+        minZoom={7}
         style={{ width: "100%" }}
         // onClick={onClickMap}
         zoomControl={false}
