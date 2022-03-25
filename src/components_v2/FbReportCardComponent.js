@@ -74,7 +74,7 @@ const FbReportCardComponent = (props) => {
           ))
         ) : (
           <li>
-            <span className="off">예측없음</span>
+            <span className="off">예측 없음</span>
           </li>
         )}
         {/* <li>
@@ -105,7 +105,7 @@ const FbReportCardComponent = (props) => {
           ))
         ) : (
           <li>
-            <span className="off">예측없음</span>
+            <span className="off">예측 없음</span>
           </li>
         )}
       </ul>
@@ -127,7 +127,7 @@ const FbReportCardComponent = (props) => {
           ))
         ) : (
           <li>
-            <span className="off">예측없음</span>
+            <span className="off">예측 없음</span>
           </li>
         )}
       </ul>
@@ -152,7 +152,7 @@ const FbReportCardComponent = (props) => {
           ))
         ) : (
           <li>
-            <span className="off">예측없음</span>
+            <span className="off">예측 없음</span>
           </li>
         )}
       </ul>
