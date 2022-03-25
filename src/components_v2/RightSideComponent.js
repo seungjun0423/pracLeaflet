@@ -102,7 +102,7 @@ const RightSideComponent = (props) => {
 
   return (
     <div className="container right">
-      <div className="select-area">
+      <div className="select-area position-1">
         <div className="form-inline box">
           <h3>연도 조회</h3>
           <div className="form-group">
@@ -132,6 +132,8 @@ const RightSideComponent = (props) => {
             </select>
           </div>
         </div>
+      </div>
+      <div className="select-area position-2">
         <div className="form-inline box">
           <div className="form-group">
             <h3 for="">일자 조회</h3>

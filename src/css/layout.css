@@ -21,31 +21,32 @@
 .btn-close { position: absolute; top: 8px; right: 8px; color: #666; font-size: 1.250em; background: transparent; border: none; border-radius: 50%; z-index: 5; }
 .btn-close:hover, .btn-close:focus { color: #af280a; text-shadow: 0 1px 0 #fff; background-color: #ffd5cc; }
 
+/*.container.left { box-shadow: 3px 0 3px rgba(0,0,0,.9); }*/
 .container.right { overflow-x: hidden; }
 
 .select-area, .button-area, .legend-area { position: absolute; z-index: 2; }
-.select-area { top: 10px; left: 10px; white-space: nowrap; }
-.button-area { top: 65px; left: 10px; padding: 5px; }
+.select-area { left: 10px; white-space: nowrap; }
+.select-area.position-1 { top: 10px; }
+.select-area.position-2 { top: 65px; }
+.button-area { top: 120px; left: 10px; padding: 5px; }
 .legend-area { bottom: 10px; right: 10px; padding: 5px; }
 
 .form-inline { vertical-align: top; padding: 5px; }
 .form-inline h3 { font-size: 1em; padding: 0; margin: 0 5px; }
 .form-inline, .form-inline h3, .form-inline .form-group { display: inline-block; }
-.form { font-size: 1em; padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; }
+.form { font-size: 1em; padding: 6px 10px; margin-left: 5px; border: 1px solid #ccc; border-radius: 4px; }
 select.form { height: 33px; }
-input[type=date].form { padding: 4px 10px; margin: 0; }
+input[type=date].form { padding: 4px 10px; }
 .btn-list li { margin-top: 5px; }
 .btn-list li:first-child { margin-top: 0; }
 
-
-.btn { min-width: 110px; color: #666; font-size: 1em; text-align: center; padding: 6px 10px; background-color: #fff; border: 1px solid #ccc; border-radius: 4px; }
+.btn { min-width: 120px; color: #666; font-size: 1em; text-align: center; padding: 6px 10px; background-color: #fff; border: 1px solid #ccc; border-radius: 4px; }
 .btn:hover, .btn:focus { color: #333; background-color: #eee; border: 1px solid #aaa; }
 .btn-list li.active .btn { color: #fff; background-color: #2d66af; border-color: #2d66af; cursor: default; }
 
 .map { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 1; }
 .guide-text { width: 100%; text-align: center; padding-right: 15px; }
-.box { background-color: #fff; border-radius: 6px; box-shadow: 0 2px 3px rgba(0,0,0,.3); }
-
+.box { background-color: #fff; border-radius: 6px; box-shadow: 0 2px 3px rgba(0,0,0,.4); }
 
 .pd-5 { padding: 5px; }
 .pd-10 { padding: 10px; }
@@ -53,5 +54,7 @@ input[type=date].form { padding: 4px 10px; margin: 0; }
 .pd-rl5 { padding: 0 5px; }
 .pd-rl10 { padding: 0 10px; }
 .pd-rl15 { padding: 0 15px; }
+
+.ResizePanel-module_ResizeBarHorizontal__3TBZ5 { margin-left: -20px; }
 
 @media screen and (max-width: 769px) { /* mobile */	}
