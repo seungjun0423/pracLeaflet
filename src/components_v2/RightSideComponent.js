@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import axios from "axios";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState, useRef, useCallback } from "react";
+// import axios from "axios";
+// import styled from "styled-components";
 
 import { targetCrops, fireblightStatus } from "../data/fireblightOptionData";
 import { provinces } from "../data/provinces";
@@ -21,15 +22,9 @@ const getYearOptions = (minDate, todayDate) => {
   }
 };
 
-const Div = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-`;
-
 const RightSideComponent = (props) => {
   const {
-    maxStationCount,
+    // maxStationCount,
     minDate,
     today,
     totalSpots,
@@ -42,8 +37,8 @@ const RightSideComponent = (props) => {
     setTargetDate,
     targetProvince,
     setTargetProvince,
-    selectedSpots,
-    setSelectedSpots,
+    // selectedSpots,
+    // setSelectedSpots,
     selectSpot,
   } = props;
 
@@ -108,14 +103,14 @@ const RightSideComponent = (props) => {
           <div className="form-group">
             <select className="form" onChange={onChangeTargetCrop}>
               {targetCrops.map((crop) => (
-                <option id={`cropOption-${crop.id}`} value={crop.id}>
+                <option key={`cropOption-${crop.id}`} value={crop.id}>
                   {crop.titleKo}
                 </option>
               ))}
             </select>
             <select className="form" onChange={onChangeYearOption}>
               {yearOptions.map((year) => (
-                <option id={`yearOption-${year}`} value={year}>
+                <option key={`yearOption-${year}`} value={year}>
                   {year}
                 </option>
               ))}
@@ -123,7 +118,7 @@ const RightSideComponent = (props) => {
             <select className="form" onChange={onChangeProvince}>
               {provinces.map((province) => (
                 <option
-                  id={`provinceOption-${province.id}`}
+                  key={`provinceOption-${province.id}`}
                   value={province.id}
                 >
                   {province.titleKo ? province.titleKo : "-"}
@@ -136,7 +131,7 @@ const RightSideComponent = (props) => {
       <div className="select-area position-2">
         <div className="form-inline box">
           <div className="form-group">
-            <h3 for="">일자 조회</h3>
+            <h3 htmlFor="lookUpFBDate">일자 조회</h3>
             <input
               id="lookUpFBDate"
               className="form"
@@ -157,6 +152,7 @@ const RightSideComponent = (props) => {
         <ul className="btn-list">
           {fireblightStatus.map((item) => (
             <li
+              key={item.id}
               className={
                 selectedFbOption.id === item.id ? "active" : "inactive"
               }

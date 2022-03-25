@@ -1,21 +1,12 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState, useRef, useCallback } from "react";
+// import styled from "styled-components";
 
 import FlowerInfectionDangerChart from "../components_v2/FlowerInfectionDangerChart";
 import { getStationFBReport } from "../context/api";
 
-const ChartWrapper = styled.div`
-  width: 250px;
-  height: 300px;
-`;
-
-const Span = styled.span`
-  background-color: "#A768AE";
-`;
-
 const FbReportCardComponent = (props) => {
-  const { spotInfo, targetCrop, targetYear, targetDate, cancelSelectSpot } =
-    props;
+  const { spotInfo, targetCrop, targetYear, cancelSelectSpot } = props;
   const [reportData, setReportData] = useState({
     chartData: null,
     bbsDates: [],
@@ -35,11 +26,11 @@ const FbReportCardComponent = (props) => {
         },
         targetCrop,
         targetYear,
-        targetDate,
+        null,
         spotInfo
       );
     }
-  }, [targetYear, targetCrop]);
+  }, [spotInfo, targetYear, targetCrop]);
 
   return (
     <div className="card">

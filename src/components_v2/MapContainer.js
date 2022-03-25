@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+// import React, { useState } from "react";
 import { divIcon } from "leaflet";
 import {
   Map,
@@ -6,15 +7,13 @@ import {
   WMSTileLayer,
   Marker,
   Tooltip,
-  Popup,
+  // Popup,
   ScaleControl,
   ZoomControl,
 } from "react-leaflet";
 import styled from "styled-components";
 
 import "./MapContainer.css";
-import InformationInTooltip from "./InformationInTooltip";
-import InformationInPopup from "./InformationInPopup";
 
 const Wrapper = styled.div`
   width: 100%;

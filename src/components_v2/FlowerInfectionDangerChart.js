@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import Highcharts, { time } from "highcharts";
+// import styled from "styled-components";
+// import Highcharts, { time } from "highcharts";
+import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-
-const NoData = styled.div`
-  font-size: 11px;
-  color: white;
-  background-color: gray;
-  padding: 5px;
-  border-radius: 5px;
-  margin: 2px;
-`;
 
 const FlowerInfectionDangerChart = (props) => {
   const { data } = props;

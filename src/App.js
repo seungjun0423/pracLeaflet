@@ -1,16 +1,18 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState, useRef, useCallback } from "react";
 import ResizePanel from "react-resize-panel";
-import axios from "axios";
+// import axios from "axios";
 import styled from "styled-components";
 
 import "./css/common.css";
 import "./css/layout.css";
-import stations from "./data/station.json";
-import fbSpots from "./data/fireblightSpots.json";
+// import stations from "./data/station.json";
+// import fbSpots from "./data/fireblightSpots.json";
 import { provinces } from "./data/provinces";
 import LeftSideComponent from "./components_v2/LeftSideComponent";
 import RightSideComponent from "./components_v2/RightSideComponent";
-import { targetCrops, fireblightStatus } from "./data/fireblightOptionData";
+// import { targetCrops, fireblightStatus } from "./data/fireblightOptionData";
+import { targetCrops } from "./data/fireblightOptionData";
 
 const Wrapper = styled.div`
   display: flex;
@@ -46,7 +48,7 @@ function App() {
   const maxStationCount = 4;
   const today = new Date();
   const minDate = new Date("2021-01-01");
-  const mapComponentRef = React.createRef();
+  // const mapComponentRef = React.createRef();
 
   const [totalSpots, setTotalSpots] = useState([]);
   const [targetCrop, setTargetCrop] = useState(targetCrops[0]);
