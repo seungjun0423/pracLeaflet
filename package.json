@@ -49,5 +49,6 @@
   },
   "main": "index.js",
   "author": "DESKTOP-L78P7IM\\jek <muchogusto.lol@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "proxy": "https://fireblight.org"
 }

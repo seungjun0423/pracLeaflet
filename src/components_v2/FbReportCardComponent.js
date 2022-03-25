@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import styled from "styled-components";
 
 import FlowerInfectionDangerChart from "../components_v2/FlowerInfectionDangerChart";
+import { getStationFBReport } from "../context/api";
 
 const ChartWrapper = styled.div`
   width: 250px;
@@ -13,7 +14,32 @@ const Span = styled.span`
 `;
 
 const FbReportCardComponent = (props) => {
-  const { stationFbData, cancelSelectSpot } = props;
+  const { spotInfo, targetCrop, targetYear, targetDate, cancelSelectSpot } =
+    props;
+  const [reportData, setReportData] = useState({
+    chartData: null,
+    bbsDates: [],
+    cmsDates: [],
+    cbsDates: [],
+    sbsDates: [],
+  });
+
+  useEffect(() => {
+    if (spotInfo) {
+      getStationFBReport(
+        (data) => {
+          setReportData(data);
+        },
+        (data) => {
+          console.log(data);
+        },
+        targetCrop,
+        targetYear,
+        targetDate,
+        spotInfo
+      );
+    }
+  }, [targetYear, targetCrop]);
 
   return (
     <div className="card">
@@ -21,22 +47,37 @@ const FbReportCardComponent = (props) => {
         type="button"
         className="btn-close"
         onClick={() => {
-          cancelSelectSpot(stationFbData);
+          cancelSelectSpot(spotInfo);
         }}
       >
         ×
       </button>
-      <h3 className="card-title">{`${stationFbData.stationName}(${stationFbData.stationCode}: ${stationFbData.stationType})`}</h3>
+      <h3 className="card-title">{`${spotInfo.stationName}(${spotInfo.stationCode}: ${spotInfo.stationType})`}</h3>
       <h3 className="card-title">꽃감염 위험도 그래프</h3>
       {/* <!-- 그래프 사이즈 width:250px height:300px --> */}
-      <FlowerInfectionDangerChart />
+      <FlowerInfectionDangerChart data={reportData.chartData} />
       <hr />
       <h3 className="card-title">꽃병징 출현</h3>
       <ul className="dise-list">
-        <li>
-          {/* <span className="off">6-17</span>
-          <span className="off">6-19</span>
-          <span className="off">6-23</span> */}
+        {reportData.bbsDates && reportData.bbsDates.length > 0 ? (
+          reportData.bbsDates.map((item) => (
+            <li key={item.id}>
+              <span className="on">
+                {item.date
+                  ? new Date(item.date)
+                      .toISOString()
+                      .slice(5, 10)
+                      .replace("-", "/")
+                  : "-"}
+              </span>
+            </li>
+          ))
+        ) : (
+          <li>
+            <span className="off">예측없음</span>
+          </li>
+        )}
+        {/* <li>
           <span className="on">06-17</span>
         </li>
         <li>
@@ -44,28 +85,76 @@ const FbReportCardComponent = (props) => {
         </li>
         <li>
           <span className="on">06-23</span>
-        </li>
+        </li> */}
       </ul>
       <hr />
       <h3 className="card-title">궤양 활성 출현</h3>
       <ul className="dise-list">
-        <li>
-          <span className="on">06-08</span>
-        </li>
+        {reportData.cmsDates && reportData.cmsDates.length > 0 ? (
+          reportData.cmsDates.map((item) => (
+            <li key={item.id}>
+              <span className="on">
+                {item.date
+                  ? new Date(item.date)
+                      .toISOString()
+                      .slice(5, 10)
+                      .replace("-", "/")
+                  : "-"}
+              </span>
+            </li>
+          ))
+        ) : (
+          <li>
+            <span className="off">예측없음</span>
+          </li>
+        )}
       </ul>
       <hr />
-      <h3 className="card-title">궤양 병징 출현</h3>
+      <h3 className="card-title">궤양 가지 마름 출현</h3>
       <ul className="dise-list">
-        <li>
-          <span className="on">06-14</span>
-        </li>
+        {reportData.cbsDates && reportData.cbsDates.length > 0 ? (
+          reportData.cbsDates.map((item) => (
+            <li key={item.id}>
+              <span className="on">
+                {item.date
+                  ? new Date(item.date)
+                      .toISOString()
+                      .slice(5, 10)
+                      .replace("-", "/")
+                  : "-"}
+              </span>
+            </li>
+          ))
+        ) : (
+          <li>
+            <span className="off">예측없음</span>
+          </li>
+        )}
       </ul>
       <hr />
-      <h3 className="card-title">신초 증상 출현</h3>
+      <h3 className="card-title">신초 병징 출현</h3>
       <ul className="dise-list">
-        <li>
+        {/* <li>
           <span className="off">예측없음</span>
-        </li>
+        </li> */}
+        {reportData.sbsDates && reportData.sbsDates.length > 0 ? (
+          reportData.sbsDates.map((item) => (
+            <li key={item.id}>
+              <span className="on">
+                {item.date
+                  ? new Date(item.date)
+                      .toISOString()
+                      .slice(5, 10)
+                      .replace("-", "/")
+                  : "-"}
+              </span>
+            </li>
+          ))
+        ) : (
+          <li>
+            <span className="off">예측없음</span>
+          </li>
+        )}
       </ul>
     </div>
   );

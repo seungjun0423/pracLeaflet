@@ -45,9 +45,12 @@ const LeftSideComponent = (props) => {
                 <small>(최대 4곳까지 선택 가능합니다.)</small>
               </p>
             ) : (
-              selectedSpots.map((stationFbData) => (
+              selectedSpots.map((spotInfo) => (
                 <FbReportCardComponent
-                  stationFbData={stationFbData}
+                  spotInfo={spotInfo}
+                  targetCrop={targetCrop}
+                  targetYear={targetYear}
+                  targetDate={targetDate}
                   cancelSelectSpot={cancelSelectSpot}
                 />
               ))

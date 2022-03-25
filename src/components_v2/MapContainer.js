@@ -8,13 +8,13 @@ import {
   Tooltip,
   Popup,
   ScaleControl,
+  ZoomControl,
 } from "react-leaflet";
 import styled from "styled-components";
 
 import "./MapContainer.css";
 import InformationInTooltip from "./InformationInTooltip";
 import InformationInPopup from "./InformationInPopup";
-import { ZoomControl } from "react-leaflet";
 
 const Wrapper = styled.div`
   width: 100%;

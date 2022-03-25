@@ -26,16 +26,16 @@ export const fireblightStatus = [
     titleKo: "꽃 병징 출현",
     title: "bbs",
     statusList: [
-      {
-        id: 201,
-        value: null,
-        titleKo: "기간 아님/해당 없음",
-        color: "#EAEAEA",
-      },
+      // {
+      //   id: 201,
+      //   value: null,
+      //   titleKo: "기간 아님/해당 없음",
+      //   color: "#EAEAEA",
+      // },
       // { id: 202, value: 1, titleKo: "출현", color: "#A768AE" },
       // { id: 203, value: 2, titleKo: "출현 없음", color: "#008000" },
       { id: 202, value: 1, titleKo: "출현 가능성 높음", color: "#A768AE" },
-      { id: 203, value: 2, titleKo: "출현 가능성 낮음", color: "#008000" },
+      { id: 203, value: null, titleKo: "출현 가능성 낮음", color: "#008000" },
     ],
   },
   {
@@ -43,11 +43,11 @@ export const fireblightStatus = [
     titleKo: "궤양 활성 출현",
     title: "cms",
     statusList: [
-      { id: 301, value: 0, titleKo: "기간 아님/해당 없음", color: "#EAEAEA" },
+      // { id: 301, value: 0, titleKo: "기간 아님/해당 없음", color: "#EAEAEA" },
       // { id: 302, value: 1, titleKo: "출현", color: "#A768AE" },
       // { id: 303, value: 2, titleKo: "출현 없음", color: "#008000" },
       { id: 302, value: 1, titleKo: "출현 가능성 높음", color: "#A768AE" },
-      { id: 303, value: 2, titleKo: "출현 가능성 낮음", color: "#008000" },
+      { id: 303, value: null, titleKo: "출현 가능성 낮음", color: "#008000" },
     ],
   },
   {
@@ -55,16 +55,16 @@ export const fireblightStatus = [
     titleKo: "궤양 마름 출현",
     title: "cbs",
     statusList: [
-      {
-        id: 401,
-        value: null,
-        titleKo: "기간 아님/해당 없음",
-        color: "#EAEAEA",
-      },
+      // {
+      //   id: 401,
+      //   value: null,
+      //   titleKo: "기간 아님/해당 없음",
+      //   color: "#EAEAEA",
+      // },
       // { id: 402, value: 1, titleKo: "출현", color: "#A768AE" },
       // { id: 403, value: 2, titleKo: "출현 없음", color: "#008000" },
       { id: 402, value: 1, titleKo: "출현 가능성 높음", color: "#A768AE" },
-      { id: 403, value: 2, titleKo: "출현 가능성 낮음", color: "#008000" },
+      { id: 403, value: null, titleKo: "출현 가능성 낮음", color: "#008000" },
     ],
   },
   {
@@ -72,16 +72,16 @@ export const fireblightStatus = [
     titleKo: "신초 병징 출현",
     title: "sbs",
     statusList: [
-      {
-        id: 401,
-        value: null,
-        titleKo: "기간 아님/해당 없음",
-        color: "#EAEAEA",
-      },
+      // {
+      //   id: 401,
+      //   value: null,
+      //   titleKo: "기간 아님/해당 없음",
+      //   color: "#EAEAEA",
+      // },
       // { id: 402, value: 1, titleKo: "출현", color: "#A768AE" },
       // { id: 403, value: 2, titleKo: "출현 없음", color: "#008000" },
       { id: 402, value: 1, titleKo: "출현 가능성 높음", color: "#A768AE" },
-      { id: 403, value: 2, titleKo: "출현 가능성 낮음", color: "#008000" },
+      { id: 403, value: null, titleKo: "출현 가능성 낮음", color: "#008000" },
     ],
   },
 ];

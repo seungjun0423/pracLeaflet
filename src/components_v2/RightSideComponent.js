@@ -60,9 +60,15 @@ const RightSideComponent = (props) => {
 
   const onChangeYearOption = (e) => {
     setTargetYear(e.target.value);
-    let tempDate = new Date(targetDate);
-    tempDate.setFullYear(e.target.value);
-    setTargetDate(tempDate);
+    if (targetDate) {
+      // 만약 날짜가 선택되어있다면, 연도만 바꿔주도록
+      let tempDate = new Date(targetDate);
+      tempDate.setFullYear(e.target.value);
+      setTargetDate(tempDate);
+    }
+    // let tempDate = new Date(targetDate);
+    // tempDate.setFullYear(e.target.value);
+    // setTargetDate(tempDate);
   };
 
   const onChangeProvince = (e) => {

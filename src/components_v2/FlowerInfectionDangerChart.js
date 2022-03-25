@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Highcharts from "highcharts";
+import Highcharts, { time } from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 const NoData = styled.div`
@@ -13,13 +13,7 @@ const NoData = styled.div`
 `;
 
 const FlowerInfectionDangerChart = (props) => {
-  const { title, data } = props;
-
-  // let targetDates = [];
-  // let series1 = [];
-  // let series2 = [];
-  // let series3 = [];
-  // let series4 = [];
+  const { data } = props;
 
   const [options, setOptions] = useState({
     exporting: {
@@ -84,7 +78,7 @@ const FlowerInfectionDangerChart = (props) => {
       min: 0,
       max: 4,
       title: {
-        text: "꽃감염 위험단계",
+        text: "꽃 감염 위험단계",
       },
     },
     credits: {
@@ -102,178 +96,153 @@ const FlowerInfectionDangerChart = (props) => {
   });
 
   useEffect(() => {
-    setOptions({
-      ...options,
-      xAxis: {
-        categories: [
-          "05-25",
-          "05-26",
-          "05-27",
-          "05-28",
-          "05-29",
-          "05-30",
-          "05-31",
-          "06-01",
-          "06-02",
-          "06-03",
-          "06-04",
-          "06-05",
-          "06-06",
-          "06-07",
-          "06-08",
-          "06-09",
-          "06-10",
-          "06-11",
-          "06-12",
-          "06-13",
+    if (data) {
+      // console.log("flowerInfectiondataChart", data);
+      setOptions({
+        ...options,
+        xAxis: {
+          categories: data.birDates
+            ? data.birDates.map((item) =>
+                new Date(item).toISOString().slice(5, 10)
+              )
+            : [],
+          // categories: [
+          //   "05-25",
+          //   "05-26",
+          //   "05-27",
+          //   "05-28",
+          //   "05-29",
+          //   "05-30",
+          //   "05-31",
+          //   "06-01",
+          //   "06-02",
+          //   "06-03",
+          //   "06-04",
+          //   "06-05",
+          //   "06-06",
+          //   "06-07",
+          //   "06-08",
+          //   "06-09",
+          //   "06-10",
+          //   "06-11",
+          //   "06-12",
+          //   "06-13",
+          // ],
+          crosshair: true,
+        },
+        series: [
+          {
+            name: "매우 위험",
+            color: "red",
+            data: data.birType4Dates ? data.birType4Dates : [],
+            // data: [
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   4,
+            //   4,
+            //   "",
+            //   "",
+            // ],
+          },
+          {
+            name: "다소 높음",
+            color: "yellow",
+            data: data.birType3Dates ? data.birType3Dates : [],
+            // data: [
+            //   2,
+            //   2,
+            //   2,
+            //   2,
+            //   2,
+            //   "",
+            //   "",
+            //   2,
+            //   "",
+            //   2,
+            //   2,
+            //   2,
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            // ],
+          },
+          {
+            name: "위험",
+            color: "orange",
+            data: data.birType2Dates ? data.birType2Dates : [],
+            // data: [
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   3,
+            //   3,
+            //   "",
+            //   3,
+            //   "",
+            //   "",
+            //   "",
+            //   3,
+            //   3,
+            //   3,
+            //   3,
+            //   "",
+            //   "",
+            //   3,
+            //   3,
+            // ],
+          },
+          {
+            name: "낮음",
+            color: "green",
+            data: data.birType1Dates ? data.birType1Dates : [],
+            // data: [
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            //   "",
+            // ],
+          },
         ],
-        crosshair: true,
-      },
-      series: [
-        {
-          name: "매우 위험",
-          color: "red",
-          data: [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            4,
-            4,
-            "",
-            "",
-          ],
-        },
-        {
-          name: "다소 높음",
-          color: "yellow",
-          data: [
-            2,
-            2,
-            2,
-            2,
-            2,
-            "",
-            "",
-            2,
-            "",
-            2,
-            2,
-            2,
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-          ],
-        },
-        {
-          name: "위험",
-          color: "orange",
-          data: [
-            "",
-            "",
-            "",
-            "",
-            "",
-            3,
-            3,
-            "",
-            3,
-            "",
-            "",
-            "",
-            3,
-            3,
-            3,
-            3,
-            "",
-            "",
-            3,
-            3,
-          ],
-        },
-        {
-          name: "낮음",
-          color: "green",
-          data: [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-          ],
-        },
-      ],
-    });
-  }, []);
-
-  // if (!data || data.length < 1) {
-  //   return <NoData>해당 데이터 없음</NoData>;
-  // }
-
-  // if (data) {
-  //   const targetDateData = data.filter((item) => item.bir > 0);
-  //   targetDates = targetDateData.map((item) => item.tm);
-  //   series1 = targetDateData.map((item) => {
-  //     if (item.bir == 1) {
-  //       return item.bir;
-  //     } else {
-  //       return 0;
-  //     }
-  //   });
-  //   series2 = targetDateData.map((item) => {
-  //     if (item.bir == 2) {
-  //       return item.bir;
-  //     } else {
-  //       return 0;
-  //     }
-  //   });
-  //   series3 = targetDateData.map((item) => {
-  //     if (item.bir == 3) {
-  //       return item.bir;
-  //     } else {
-  //       return 0;
-  //     }
-  //   });
-  //   series4 = targetDateData.map((item) => {
-  //     if (item.bir == 4) {
-  //       return item.bir;
-  //     } else {
-  //       return 0;
-  //     }
-  //   });
-  // }
+      });
+    }
+  }, [data]);
 
   return (
     <>
