@@ -57,7 +57,7 @@ const FbReportCardComponent = (props) => {
       {/* <!-- 그래프 사이즈 width:250px height:300px --> */}
       <FlowerInfectionDangerChart data={reportData.chartData} />
       <hr />
-      <h3 className="card-title">꽃병징 출현</h3>
+      <h3 className="card-title">꽃 병징 출현</h3>
       <ul className="dise-list">
         {reportData.bbsDates && reportData.bbsDates.length > 0 ? (
           reportData.bbsDates.map((item) => (
