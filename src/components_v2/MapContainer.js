@@ -74,7 +74,9 @@ const MapContainer = (props) => {
                   }; opacity: 0.8; height:24px; border-radius:50%;"><div/>`,
                 })}
               >
-                <Tooltip>{`${spot.stationName}(${spot.stationCode}: ${spot.stationType})`}</Tooltip>
+                <Tooltip>{`${spot.stationName ? spot.stationName : "-"}(${
+                  spot.stationCode ? spot.stationCode : "-"
+                }: ${spot.stationType ? spot.stationType : "-"})`}</Tooltip>
               </Marker>
             ))
           : null}

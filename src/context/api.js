@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { fireblightStatus } from "../data/fireblightOptionData";
 
-const getRefinedFBSpots = (data) => {
+const getRefinedFBSpots = (data, dataType) => {
   const getColor = (itemTitle, value) => {
     const targetSymptom = fireblightStatus.filter(
       (item) => item.title == itemTitle
@@ -27,8 +27,11 @@ const getRefinedFBSpots = (data) => {
       lon: item.coords ? parseFloat(item.coords.split(",")[0]) : 127.7669,
       lat: item.coords ? parseFloat(item.coords.split(",")[1]) : 35.9078,
       bir: {
-        value: item.max_bir,
-        color: getColor("bir", item.max_bir),
+        value: dataType == "yearType" ? item.max_bir : item.bir,
+        color: getColor(
+          "bir",
+          dataType == "yearType" ? item.max_bir : item.bir
+        ),
       },
       bbs: {
         value: item.bbs_last_appeared_status,
@@ -71,7 +74,8 @@ export const getFBSpots = async (
     date: targetDate
       ? new Date(targetDate).toISOString().slice(0, 10)
       : `${targetYear}-01-01`,
-    "filter-date-type": "yearType",
+    // "filter-date-type": "yearType",
+    "filter-date-type": targetDate ? "dateType" : "yearType",
     plant: targetCrop.title,
   };
 
@@ -83,7 +87,9 @@ export const getFBSpots = async (
     await axios.get(api, { params: { ...params } }).then((response) => {
       const data = response.data;
       // console.log(getRefinedFBSpots(data));
-      setDataCallBack(getRefinedFBSpots(data));
+      setDataCallBack(
+        getRefinedFBSpots(data, targetDate ? "dateType" : "yearType")
+      );
     });
   } catch (e) {
     console.log(e);
