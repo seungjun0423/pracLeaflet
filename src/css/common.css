@@ -1,5 +1,9 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet" />
+
 html, body {
-	font-family: '돋움', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 16px;
 	height: 100%;
 	font-weight: 100;

@@ -21,7 +21,6 @@
 .btn-close { position: absolute; top: 8px; right: 8px; color: #666; font-size: 1.250em; background: transparent; border: none; border-radius: 50%; z-index: 5; }
 .btn-close:hover, .btn-close:focus { color: #af280a; text-shadow: 0 1px 0 #fff; background-color: #ffd5cc; }
 
-/*.container.left { box-shadow: 3px 0 3px rgba(0,0,0,.9); }*/
 .container.right { overflow-x: hidden; }
 
 .select-area, .button-area, .legend-area { position: absolute; z-index: 2; }
@@ -35,10 +34,10 @@
 .form-inline h3 { font-size: 1em; padding: 0; margin: 0 5px; }
 .form-inline, .form-inline h3, .form-inline .form-group { display: inline-block; }
 .form { font-size: 1em; padding: 6px 10px; margin-left: 5px; border: 1px solid #ccc; border-radius: 4px; }
-select.form { height: 33px; }
-input[type=date].form { padding: 4px 10px; }
 .btn-list li { margin-top: 5px; }
 .btn-list li:first-child { margin-top: 0; }
+select.form { height: 33px; }
+input[type=date].form { padding: 4px 10px; }
 
 .btn { min-width: 120px; color: #666; font-size: 1em; text-align: center; padding: 6px 10px; background-color: #fff; border: 1px solid #ccc; border-radius: 4px; }
 .btn:hover, .btn:focus { color: #333; background-color: #eee; border: 1px solid #aaa; }
@@ -56,5 +55,4 @@ input[type=date].form { padding: 4px 10px; }
 .pd-rl15 { padding: 0 15px; }
 
 .ResizePanel-module_ResizeBarHorizontal__3TBZ5 { margin-left: -20px; }
-
-@media screen and (max-width: 769px) { /* mobile */	}
+.leaflet-marker-icon>div { width: 15px; height: 15px !important; border: 1px solid #000; }
