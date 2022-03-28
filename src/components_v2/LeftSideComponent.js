@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 // import React, { useEffect, useState, useRef, useCallback } from "react";
 // import axios from "axios";
 import FbReportCardComponent from "./FbReportCardComponent";
@@ -6,6 +6,8 @@ import FbReportCardComponent from "./FbReportCardComponent";
 const LeftSideComponent = (props) => {
   // const { stations } = props;
   const {
+    setLoading,
+    setError,
     maxStationCount,
     targetCrop,
     targetYear,
@@ -50,14 +52,17 @@ const LeftSideComponent = (props) => {
                 <small>(최대 4곳까지 선택 가능합니다.)</small>
               </p>
             ) : (
-              selectedSpots.map((spotInfo) => (
+              selectedSpots.map((spotInfo, index) => (
                 <FbReportCardComponent
+                  key={spotInfo.stationCode}
                   spotInfo={spotInfo}
                   targetCrop={targetCrop}
                   targetYear={targetYear}
                   targetDate={targetDate}
                   cancelSelectSpot={cancelSelectSpot}
                   nowDateTime={nowDateTime}
+                  setLoading={setLoading}
+                  setError={setError}
                 />
               ))
             )}

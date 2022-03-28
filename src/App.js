@@ -11,8 +11,10 @@ import "./css/layout.css";
 import { provinces } from "./data/provinces";
 import LeftSideComponent from "./components_v2/LeftSideComponent";
 import RightSideComponent from "./components_v2/RightSideComponent";
+import ServerErrorModalComponent from "./components_v2/ServerErrorModalComponent";
 // import { targetCrops, fireblightStatus } from "./data/fireblightOptionData";
 import { targetCrops } from "./data/fireblightOptionData";
+import LoadingComponent from "./components_v2/LoadingComponent";
 
 const Wrapper = styled.div`
   display: flex;
@@ -67,6 +69,8 @@ function App() {
   const minDate = new Date("2021-01-01");
   // const mapComponentRef = React.createRef();
 
+  const [error, setError] = useState("에러");
+  const [loading, setLoading] = useState(true);
   const [totalSpots, setTotalSpots] = useState([]);
   const [targetCrop, setTargetCrop] = useState(targetCrops[0]);
   const [targetYear, setTargetYear] = useState(today.getFullYear());
@@ -119,68 +123,77 @@ function App() {
   useEffect(() => {}, []);
 
   return (
-    <Wrapper>
-      {/* <div className="flex-box"> */}
-      <ContentsWrapper>
-        {/* <div className="flex-body"> */}
-        <ResizePanel
-          direction="e"
-          // style={{
-          //   width: "100%",
-          //   height: "100%",
-          // }}
-        >
-          <LeftContentsWrapper>
-            {/* <div className="flex-left"> */}
+    <>
+      {error ? <ServerErrorModalComponent /> : null}
+      {loading ? <LoadingComponent /> : null}
+      <Wrapper>
+        {/* <div className="flex-box"> */}
+        <ContentsWrapper>
+          {/* <div className="flex-body"> */}
+          <ResizePanel
+            direction="e"
+            style={{ zIndex: 2 }}
+            // style={{
+            //   width: "100%",
+            //   height: "100%",
+            // }}
+          >
+            <LeftContentsWrapper>
+              {/* <div className="flex-left"> */}
 
-            <LeftSideComponent
+              <LeftSideComponent
+                setError={setError}
+                setLoading={setLoading}
+                maxStationCount={maxStationCount}
+                targetCrop={targetCrop}
+                targetYear={targetYear}
+                targetDate={targetDate}
+                selectedSpots={selectedSpots}
+                setSelectedSpots={setSelectedSpots}
+                cancelSelectSpot={cancelSelectSpot}
+                nowDateTime={nowDateTime}
+              />
+            </LeftContentsWrapper>
+          </ResizePanel>
+          <RightContentsWrapper>
+            {/* <div className="flex-right"> */}
+            <RightSideComponent
+              setError={setError}
+              setLoading={setLoading}
               maxStationCount={maxStationCount}
+              minDate={minDate}
+              today={today}
+              totalSpots={totalSpots}
+              setTotalSpots={setTotalSpots}
               targetCrop={targetCrop}
+              setTargetCrop={setTargetCrop}
               targetYear={targetYear}
+              setTargetYear={setTargetYear}
               targetDate={targetDate}
+              setTargetDate={setTargetDate}
+              targetProvince={targetProvince}
+              setTargetProvince={setTargetProvince}
               selectedSpots={selectedSpots}
               setSelectedSpots={setSelectedSpots}
-              cancelSelectSpot={cancelSelectSpot}
+              selectSpot={selectSpot}
               nowDateTime={nowDateTime}
+              onClickRefreshButton={() => {
+                if (!refreshOn) {
+                  // alert("최신 날짜의 정보를 불러옵니다. (1시간 간격)");
+                  alert("가장 최신 연도의 정보를 불러옵니다. (1시간 간격)");
+                }
+                setRefreshOn(!refreshOn);
+                const nowDate = new Date();
+                setNowDateTime(nowDate);
+                setTargetYear(nowDate.getFullYear());
+                setTargetDate();
+                console.log("onClickRefreshButton");
+              }}
             />
-          </LeftContentsWrapper>
-        </ResizePanel>
-        <RightContentsWrapper>
-          {/* <div className="flex-right"> */}
-          <RightSideComponent
-            maxStationCount={maxStationCount}
-            minDate={minDate}
-            today={today}
-            totalSpots={totalSpots}
-            setTotalSpots={setTotalSpots}
-            targetCrop={targetCrop}
-            setTargetCrop={setTargetCrop}
-            targetYear={targetYear}
-            setTargetYear={setTargetYear}
-            targetDate={targetDate}
-            setTargetDate={setTargetDate}
-            targetProvince={targetProvince}
-            setTargetProvince={setTargetProvince}
-            selectedSpots={selectedSpots}
-            setSelectedSpots={setSelectedSpots}
-            selectSpot={selectSpot}
-            nowDateTime={nowDateTime}
-            onClickRefreshButton={() => {
-              if (!refreshOn) {
-                // alert("최신 날짜의 정보를 불러옵니다. (1시간 간격)");
-                alert("가장 최신 연도의 정보를 불러옵니다. (1시간 간격)");
-              }
-              setRefreshOn(!refreshOn);
-              const nowDate = new Date();
-              setNowDateTime(nowDate);
-              setTargetYear(nowDate.getFullYear());
-              setTargetDate();
-              console.log("onClickRefreshButton");
-            }}
-          />
-        </RightContentsWrapper>
-      </ContentsWrapper>
-    </Wrapper>
+          </RightContentsWrapper>
+        </ContentsWrapper>
+      </Wrapper>
+    </>
   );
 }
 

@@ -58,6 +58,7 @@ const getRefinedFBSpots = (data, dataType) => {
 export const getFBSpots = async (
   setDataCallBack,
   setLoadingCallBack,
+  setErrorCallBack,
   targetCrop,
   targetYear,
   targetDate
@@ -86,6 +87,7 @@ export const getFBSpots = async (
 
   try {
     setLoadingCallBack(true);
+    setErrorCallBack();
     await axios.get(api, { params: { ...params } }).then((response) => {
       const data = response.data;
       // console.log(getRefinedFBSpots(data));
@@ -94,7 +96,7 @@ export const getFBSpots = async (
       );
     });
   } catch (e) {
-    console.log(e);
+    setErrorCallBack(e);
   }
   setLoadingCallBack(false);
 };
@@ -174,6 +176,7 @@ const getRefinedStationFBReport = (data) => {
 export const getStationFBReport = async (
   setDataCallBack,
   setLoadingCallBack,
+  setErrorCallBack,
   targetCrop,
   targetYear,
   targetDate,
@@ -191,13 +194,14 @@ export const getStationFBReport = async (
 
   try {
     setLoadingCallBack(true);
+    setErrorCallBack();
     await axios.get(api, { params: { ...params } }).then((response) => {
       const data = response.data;
       // console.log(getRefinedStationFBReport(data));
       setDataCallBack(getRefinedStationFBReport(data));
     });
   } catch (e) {
-    console.log(e);
+    setErrorCallBack(e);
   }
   setLoadingCallBack(false);
 };

@@ -25,6 +25,8 @@ const getYearOptions = (minDate, todayDate) => {
 const RightSideComponent = (props) => {
   const {
     // maxStationCount,
+    setLoading,
+    setError,
     minDate,
     today,
     totalSpots,
@@ -89,7 +91,10 @@ const RightSideComponent = (props) => {
           setTotalSpots(data);
         },
         (data) => {
-          console.log(data);
+          setLoading(data);
+        },
+        (data) => {
+          setError(data);
         },
         targetCrop,
         targetYear,
@@ -132,7 +137,7 @@ const RightSideComponent = (props) => {
         </div>
         <button
           type="button"
-          class="btn"
+          className="btn"
           onClick={() => {
             onClickRefreshButton();
             setIsButtonClicked(!isButtonClicked);
