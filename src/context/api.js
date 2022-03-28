@@ -18,7 +18,9 @@ const getRefinedFBSpots = (data, dataType) => {
     return null;
   };
 
-  return data.map((item) => {
+  const newData = data.filter((item) => item.st_id > 0);
+
+  return newData.map((item) => {
     return {
       id: item.st_id,
       stationCode: item.code,
