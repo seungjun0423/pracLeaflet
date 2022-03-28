@@ -40,10 +40,13 @@ const RightSideComponent = (props) => {
     // selectedSpots,
     // setSelectedSpots,
     selectSpot,
+    onClickRefreshButton,
+    nowDateTime,
   } = props;
 
   const [yearOptions, setYearOptions] = useState([]);
   const [selectedFbOption, setSelectedFbOption] = useState(fireblightStatus[0]);
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   const onChangeTargetCrop = (e) => {
     const cropId = e.target.value;
@@ -93,7 +96,7 @@ const RightSideComponent = (props) => {
         targetDate
       );
     }
-  }, [targetYear, targetDate, targetCrop]);
+  }, [targetYear, targetDate, targetCrop, nowDateTime]);
 
   return (
     <div className="container right">
@@ -127,6 +130,31 @@ const RightSideComponent = (props) => {
             </select>
           </div>
         </div>
+        <button
+          type="button"
+          class="btn"
+          onClick={() => {
+            onClickRefreshButton();
+            setIsButtonClicked(!isButtonClicked);
+          }}
+        >
+          {isButtonClicked
+            ? `자동 새로고침 중지 (마지막 업데이트: ${
+                nowDateTime
+                  ? `${nowDateTime.toISOString().slice(0, 10)} ${nowDateTime
+                      .getHours()
+                      .toString()
+                      .padStart(2, "0")}:${nowDateTime
+                      .getMinutes()
+                      .toString()
+                      .padStart(2, "0")}:${nowDateTime
+                      .getSeconds()
+                      .toString()
+                      .padStart(2, "0")}`
+                  : "-"
+              })`
+            : "자동 새로고침 (1시간 간격)"}
+        </button>
       </div>
       <div className="select-area position-2">
         <div className="form-inline box">

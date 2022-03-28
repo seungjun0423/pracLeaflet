@@ -6,7 +6,8 @@ import FlowerInfectionDangerChart from "../components_v2/FlowerInfectionDangerCh
 import { getStationFBReport } from "../context/api";
 
 const FbReportCardComponent = (props) => {
-  const { spotInfo, targetCrop, targetYear, cancelSelectSpot } = props;
+  const { spotInfo, targetCrop, targetYear, cancelSelectSpot, nowDateTime } =
+    props;
   const [reportData, setReportData] = useState({
     chartData: null,
     bbsDates: [],
@@ -17,6 +18,7 @@ const FbReportCardComponent = (props) => {
 
   useEffect(() => {
     if (spotInfo) {
+      console.log("getStationFBReport", nowDateTime);
       getStationFBReport(
         (data) => {
           setReportData(data);
@@ -30,7 +32,7 @@ const FbReportCardComponent = (props) => {
         spotInfo
       );
     }
-  }, [spotInfo, targetYear, targetCrop]);
+  }, [spotInfo, targetYear, targetCrop, nowDateTime]);
 
   return (
     <div className="card">

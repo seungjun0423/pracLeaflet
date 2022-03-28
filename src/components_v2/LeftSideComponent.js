@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import React, { useEffect, useState, useRef, useCallback } from "react";
 // import axios from "axios";
 import FbReportCardComponent from "./FbReportCardComponent";
@@ -13,7 +13,11 @@ const LeftSideComponent = (props) => {
     selectedSpots,
     // setSelectedSpots,
     cancelSelectSpot,
+    nowDateTime,
   } = props;
+
+  useEffect(() => {}, []);
+
   return (
     <div className="container left">
       <h1 className="title-top">전국 과수화상병 모니터링 서비스</h1>
@@ -53,6 +57,7 @@ const LeftSideComponent = (props) => {
                   targetYear={targetYear}
                   targetDate={targetDate}
                   cancelSelectSpot={cancelSelectSpot}
+                  nowDateTime={nowDateTime}
                 />
               ))
             )}

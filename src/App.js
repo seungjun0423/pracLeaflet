@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 // import React, { useEffect, useState, useRef, useCallback } from "react";
 import ResizePanel from "react-resize-panel";
 // import axios from "axios";
@@ -44,6 +44,23 @@ const RightContentsWrapper = styled.div`
   height: 100%;
 `;
 
+function useInterval(callback, delay) {
+  const savedCallback = useRef();
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  });
+
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+
+    let id = setInterval(tick, delay);
+    return () => clearInterval(id);
+  }, [delay]);
+}
+
 function App() {
   const maxStationCount = 4;
   const today = new Date();
@@ -57,6 +74,11 @@ function App() {
   const [targetDate, setTargetDate] = useState();
   const [targetProvince, setTargetProvince] = useState(provinces[0]);
   const [selectedSpots, setSelectedSpots] = useState([]);
+  // 새로고침 관리를 위한
+  const [refreshOn, setRefreshOn] = useState(false);
+  const [delay, setDelay] = useState(1000 * 60 * 60); // 60분 간격
+  // const [delay, setDelay] = useState(5000); //테스트용 5초간격
+  const [nowDateTime, setNowDateTime] = useState();
 
   const cancelSelectSpot = (targetSpot) => {
     setSelectedSpots([
@@ -65,7 +87,7 @@ function App() {
   };
 
   const selectSpot = (targetSpot) => {
-    console.log("selectSpot", targetSpot);
+    // console.log("selectSpot", targetSpot);
     let isAlreadySelected = selectedSpots.filter(
       (item) => item.id == targetSpot.id
     )[0];
@@ -79,6 +101,20 @@ function App() {
     }
     alert(`최대 ${maxStationCount}곳까지 선택 가능합니다.`);
   };
+
+  useInterval(() => {
+    if (refreshOn) {
+      // // 새로고침은 현재 연도의 데이터를 가져오도록 설정
+      const nowDate = new Date();
+      setNowDateTime(nowDate);
+      setTargetYear(nowDate.getFullYear());
+      // setTargetDate(nowDate);
+      setTargetDate();
+      // // console.log("refreshOn", nowDate);
+    } else {
+      return;
+    }
+  }, delay);
 
   useEffect(() => {}, []);
 
@@ -105,6 +141,7 @@ function App() {
               selectedSpots={selectedSpots}
               setSelectedSpots={setSelectedSpots}
               cancelSelectSpot={cancelSelectSpot}
+              nowDateTime={nowDateTime}
             />
           </LeftContentsWrapper>
         </ResizePanel>
@@ -127,6 +164,19 @@ function App() {
             selectedSpots={selectedSpots}
             setSelectedSpots={setSelectedSpots}
             selectSpot={selectSpot}
+            nowDateTime={nowDateTime}
+            onClickRefreshButton={() => {
+              if (!refreshOn) {
+                // alert("최신 날짜의 정보를 불러옵니다. (1시간 간격)");
+                alert("가장 최신 연도의 정보를 불러옵니다. (1시간 간격)");
+              }
+              setRefreshOn(!refreshOn);
+              const nowDate = new Date();
+              setNowDateTime(nowDate);
+              setTargetYear(nowDate.getFullYear());
+              setTargetDate();
+              console.log("onClickRefreshButton");
+            }}
           />
         </RightContentsWrapper>
       </ContentsWrapper>
