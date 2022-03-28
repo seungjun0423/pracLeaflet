@@ -18,7 +18,12 @@ const getRefinedFBSpots = (data, dataType) => {
     return null;
   };
 
-  const newData = data.filter((item) => item.st_id > 0);
+  const targetItem = data.filter((item) => item.items !== undefined)[0];
+  // console.log("targetItem", targetItem);
+
+  const newData =
+    targetItem.items && targetItem.items.length > 0 ? targetItem.items : [];
+  // console.log("newData", newData);
 
   return newData.map((item) => {
     return {
