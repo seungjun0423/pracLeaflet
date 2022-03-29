@@ -124,7 +124,7 @@ function App() {
 
   return (
     <>
-      {error ? <ServerErrorModalComponent /> : null}
+      {/* {error ? <ServerErrorModalComponent /> : null} */}
       {loading ? <LoadingComponent /> : null}
       <Wrapper>
         {/* <div className="flex-box"> */}
