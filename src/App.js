@@ -124,7 +124,14 @@ function App() {
 
   return (
     <>
-      {/* {error ? <ServerErrorModalComponent /> : null} */}
+      {/* {error ? (
+        <ServerErrorModalComponent
+          onClickButton={() => {
+            console.log("onClickButton");
+            setError();
+          }}
+        />
+      ) : null} */}
       {loading ? <LoadingComponent /> : null}
       <Wrapper>
         {/* <div className="flex-box"> */}

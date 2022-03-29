@@ -40,20 +40,15 @@ const RefreshButton = styled.button`
 `;
 
 const ServerErrorModalComponent = (props) => {
-  // const { message } = props;
+  const { onClickButton } = props;
+
   const message = "해당 API가 원활하지 않습니다. 재시도하여 주세요.";
   return (
     <ModalWrapper>
       <ModalBackDrop />
       <ModalMessageBox>
         <p>{message}</p>
-        <RefreshButton
-          onClick={() => {
-            window.location.reload();
-          }}
-        >
-          새로고침 버튼
-        </RefreshButton>
+        <RefreshButton onClick={onClickButton}>새로고침 버튼</RefreshButton>
       </ModalMessageBox>
     </ModalWrapper>
   );

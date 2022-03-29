@@ -89,8 +89,8 @@ export const getFBSpots = async (
     plant: targetCrop.title,
   };
 
-  const api = `https://fireblight.org/fireblight/getMaryblyts`;
   // const api = `/fireblight/getMaryblyts`;
+  const api = `https://fireblight.org/fireblight/getMaryblyts`;
 
   try {
     setLoadingCallBack(true);
@@ -104,6 +104,7 @@ export const getFBSpots = async (
     });
   } catch (e) {
     setErrorCallBack(e);
+    alert("해당 API 호출에 실패하였습니다. 재시도하여 주세요.");
   }
   setLoadingCallBack(false);
 };
@@ -210,6 +211,7 @@ export const getStationFBReport = async (
     });
   } catch (e) {
     setErrorCallBack(e);
+    alert("해당 API 호출에 실패하였습니다. 재시도하여 주세요.");
   }
   setLoadingCallBack(false);
 };
