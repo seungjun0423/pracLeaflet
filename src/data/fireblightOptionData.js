@@ -52,7 +52,7 @@ export const fireblightStatus = [
   },
   {
     id: 4,
-    titleKo: "궤양 마름 출현",
+    titleKo: "궤양 가지 마름 출현",
     title: "cbs",
     statusList: [
       // {
