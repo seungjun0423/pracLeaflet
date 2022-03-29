@@ -2,6 +2,8 @@ import axios from "axios";
 
 import { fireblightStatus } from "../data/fireblightOptionData";
 
+axios.defaults.withCredentials = true;
+
 const getRefinedFBSpots = (data, dataType) => {
   const getColor = (itemTitle, value) => {
     const targetSymptom = fireblightStatus.filter(
@@ -88,8 +90,7 @@ export const getFBSpots = async (
   };
 
   // const api = `https://fireblight.org/fireblight/getMaryblyts`;
-  const api = `/api/fireblight/getMaryblyts`;
-  // const api = `/fireblight/getMaryblyts`;
+  const api = `/fireblight/getMaryblyts`;
 
   try {
     setLoadingCallBack(true);
@@ -196,8 +197,7 @@ export const getStationFBReport = async (
     lon: spotInfo.lon,
   };
 
-  // const api = `/fireblight/getMaryblyt`;
-  const api = `/api/fireblight/getMaryblyt`;
+  const api = `/fireblight/getMaryblyt`;
 
   try {
     setLoadingCallBack(true);
