@@ -89,8 +89,8 @@ export const getFBSpots = async (
     plant: targetCrop.title,
   };
 
-  // const api = `https://fireblight.org/fireblight/getMaryblyts`;
-  const api = `/fireblight/getMaryblyts`;
+  const api = `https://fireblight.org/fireblight/getMaryblyts`;
+  // const api = `/fireblight/getMaryblyts`;
 
   try {
     setLoadingCallBack(true);
@@ -197,7 +197,8 @@ export const getStationFBReport = async (
     lon: spotInfo.lon,
   };
 
-  const api = `/fireblight/getMaryblyt`;
+  // const api = `/fireblight/getMaryblyt`;
+  const api = `https://fireblight.org/fireblight/getMaryblyt`;
 
   try {
     setLoadingCallBack(true);
