@@ -88,7 +88,8 @@ export const getFBSpots = async (
   };
 
   // const api = `https://fireblight.org/fireblight/getMaryblyts`;
-  const api = `https://fireblight.org/fireblight/getMaryblyts`;
+  const api = `/api/fireblight/getMaryblyts`;
+  // const api = `/fireblight/getMaryblyts`;
 
   try {
     setLoadingCallBack(true);
@@ -195,7 +196,8 @@ export const getStationFBReport = async (
     lon: spotInfo.lon,
   };
 
-  const api = `/fireblight/getMaryblyt`;
+  // const api = `/fireblight/getMaryblyt`;
+  const api = `/api/fireblight/getMaryblyt`;
 
   try {
     setLoadingCallBack(true);
