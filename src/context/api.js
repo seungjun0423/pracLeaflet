@@ -88,7 +88,7 @@ export const getFBSpots = async (
   };
 
   // const api = `https://fireblight.org/fireblight/getMaryblyts`;
-  const api = `/fireblight/getMaryblyts`;
+  const api = `https://fireblight.org/fireblight/getMaryblyts`;
 
   try {
     setLoadingCallBack(true);
