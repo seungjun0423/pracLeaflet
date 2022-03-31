@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import React, { useEffect, useState, useRef, useCallback } from "react";
-// import axios from "axios";
-// import styled from "styled-components";
 
 import { targetCrops, fireblightStatus } from "../data/fireblightOptionData";
 import { provinces } from "../data/provinces";

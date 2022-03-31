@@ -1,20 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-// import React, { useEffect, useState, useRef, useCallback } from "react";
 import ResizePanel from "react-resize-panel";
-// import axios from "axios";
 import styled from "styled-components";
 
-import "./css/common.css";
-import "./css/layout.css";
-// import stations from "./data/station.json";
-// import fbSpots from "./data/fireblightSpots.json";
 import { provinces } from "./data/provinces";
 import LeftSideComponent from "./components_v2/LeftSideComponent";
 import RightSideComponent from "./components_v2/RightSideComponent";
-import ServerErrorModalComponent from "./components_v2/ServerErrorModalComponent";
-// import { targetCrops, fireblightStatus } from "./data/fireblightOptionData";
-import { targetCrops } from "./data/fireblightOptionData";
 import LoadingComponent from "./components_v2/LoadingComponent";
+
+import "./css/common.css";
+import "./css/layout.css";
+import { targetCrops } from "./data/fireblightOptionData";
 
 const Wrapper = styled.div`
   display: flex;
@@ -124,30 +119,14 @@ function App() {
 
   return (
     <>
-      {/* {error ? (
-        <ServerErrorModalComponent
-          onClickButton={() => {
-            console.log("onClickButton");
-            setError();
-          }}
-        />
-      ) : null} */}
       {loading ? <LoadingComponent /> : null}
       <Wrapper>
         {/* <div className="flex-box"> */}
         <ContentsWrapper>
           {/* <div className="flex-body"> */}
-          <ResizePanel
-            direction="e"
-            style={{ zIndex: 2 }}
-            // style={{
-            //   width: "100%",
-            //   height: "100%",
-            // }}
-          >
+          <ResizePanel direction="e" style={{ zIndex: 2 }}>
             <LeftContentsWrapper>
               {/* <div className="flex-left"> */}
-
               <LeftSideComponent
                 setError={setError}
                 setLoading={setLoading}

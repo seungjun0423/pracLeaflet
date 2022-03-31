@@ -20,11 +20,10 @@ const getRefinedFBSpots = (data, dataType) => {
     return null;
   };
 
-  const targetItem = data.filter((item) => item.items !== undefined)[0];
+  // const targetItem = data.filter((item) => item.items !== undefined)[0];
   // console.log("targetItem", targetItem);
 
-  const newData =
-    targetItem.items && targetItem.items.length > 0 ? targetItem.items : [];
+  const newData = data.items && data.items.length > 0 ? data.items : [];
   // console.log("newData", newData);
 
   return newData.map((item) => {
@@ -36,27 +35,27 @@ const getRefinedFBSpots = (data, dataType) => {
       lon: item.coords ? parseFloat(item.coords.split(",")[0]) : 127.7669,
       lat: item.coords ? parseFloat(item.coords.split(",")[1]) : 35.9078,
       bir: {
-        value: dataType == "yearType" ? item.max_bir : item.bir,
+        value: dataType == "yearType" ? item.bir_max_status : item.bir,
         color: getColor(
           "bir",
-          dataType == "yearType" ? item.max_bir : item.bir
+          dataType == "yearType" ? item.bir_max_status : item.bir
         ),
       },
       bbs: {
         value: item.bbs_last_appeared_status,
-        color: getColor("bbs", item.bbs_last_appeared_status),
+        color: getColor("bbs", item.bbs_max_status),
       },
       cms: {
         value: item.cms_last_appeared_status,
-        color: getColor("cms", item.cms_last_appeared_status),
+        color: getColor("cms", item.cms_max_status),
       },
       cbs: {
         value: item.cbs_last_appeared_status,
-        color: getColor("cbs", item.cbs_last_appeared_status),
+        color: getColor("cbs", item.cbs_max_status),
       },
       sbs: {
         value: item.sbs_last_appeared_status,
-        color: getColor("sbs", item.sbs_last_appeared_status),
+        color: getColor("sbs", item.sbs_max_status),
       },
     };
   });
@@ -70,25 +69,19 @@ export const getFBSpots = async (
   targetYear,
   targetDate
 ) => {
-  // const params = {
-  //   year: targetYear,
-  //   plant: targetCrop.title,
-  // };
-
-  // // const api = `/api/v1/weatherInfo/ajaxMinMaxValue`;
-  // // https://old.fireblight.org/fireblight/getMaryblyts?year=2021&plant=apple
-  // const api = `https://old.fireblight.org/fireblight/getMaryblyts`;
-
   const params = {
-    // date: new Date(targetDate).toISOString().slice(0, 10),
     date: targetDate
       ? new Date(targetDate).toISOString().slice(0, 10)
       : `${targetYear}-01-01`,
-    // "filter-date-type": "yearType",
-    "filter-date-type": targetDate ? "dateType" : "yearType",
+    // "filter-date-type": targetDate ? "dateType" : "yearType",
+    "maryblyts-response-type": targetDate
+      ? "specificDateMaryblytsStatus"
+      : "specificYearMaryblytsMaxStatus",
     plant: targetCrop.title,
   };
 
+  // // https://old.fireblight.org/fireblight/getMaryblyts?year=2021&plant=apple
+  // const api = `https://old.fireblight.org/fireblight/getMaryblyts`;
   // const api = `/fireblight/getMaryblyts`;
   const api = `https://fireblight.org/fireblight/getMaryblyts`;
 

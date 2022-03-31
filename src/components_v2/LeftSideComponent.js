@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-// import React, { useEffect, useState, useRef, useCallback } from "react";
-// import axios from "axios";
 import FbReportCardComponent from "./FbReportCardComponent";
 
 const LeftSideComponent = (props) => {

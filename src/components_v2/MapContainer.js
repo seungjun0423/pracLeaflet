@@ -1,5 +1,4 @@
 import React from "react";
-// import React, { useState } from "react";
 import { divIcon } from "leaflet";
 import {
   Map,
