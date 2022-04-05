@@ -27,6 +27,7 @@ const RightSideComponent = (props) => {
     setLoading,
     setError,
     minDate,
+    maxDate,
     today,
     totalSpots,
     setTotalSpots,
@@ -199,7 +200,11 @@ const RightSideComponent = (props) => {
               type="date"
               onChange={onChangeTargetDate}
               min={targetYear ? `${targetYear}-01-01` : ""}
-              max={targetYear ? `${targetYear}-12-31` : ""}
+              max={
+                targetYear && targetYear == new Date().getFullYear()
+                  ? new Date(maxDate).toISOString().slice(0, 10)
+                  : `${targetYear}-12-31`
+              }
               value={
                 targetDate
                   ? new Date(targetDate).toISOString().slice(0, 10)
