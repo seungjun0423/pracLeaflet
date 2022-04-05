@@ -60,8 +60,11 @@ function useInterval(callback, delay) {
 
 function App() {
   const maxStationCount = 4;
+  const maxDayCountAfterToday = 2;
   const today = new Date();
+
   const minDate = new Date("2021-01-01");
+  const maxDate = new Date().setDate(today.getDate() + maxDayCountAfterToday);
   // const mapComponentRef = React.createRef();
 
   const [error, setError] = useState("에러");
@@ -148,6 +151,7 @@ function App() {
               setLoading={setLoading}
               maxStationCount={maxStationCount}
               minDate={minDate}
+              maxDate={maxDate}
               today={today}
               totalSpots={totalSpots}
               setTotalSpots={setTotalSpots}
