@@ -153,7 +153,7 @@ const FlowerInfectionDangerChart = (props) => {
           {
             name: "위험",
             color: "orange",
-            data: data.birType2Dates ? data.birType3Dates : [],
+            data: data.birType3Dates ? data.birType3Dates : [],
             // data: [
             //   "",
             //   "",
@@ -178,9 +178,9 @@ const FlowerInfectionDangerChart = (props) => {
             // ],
           },
           {
-            name: "다소 높음",
+            name: "다소 낮음",
             color: "yellow",
-            data: data.birType3Dates ? data.birType2Dates : [],
+            data: data.birType2Dates ? data.birType2Dates : [],
             // data: [
             //   2,
             //   2,
