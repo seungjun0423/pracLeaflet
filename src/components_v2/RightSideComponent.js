@@ -7,12 +7,6 @@ import LegendComponent from "../components_v2/LegendComponent";
 import MapContainer from "./MapContainer";
 import { getFBSpots } from "../context/api";
 
-const StationClassifier = styled.div`
-  box-sizing: border-box;
-  padding: 10px;
-  background-color: red;
-`;
-
 const getYearOptions = (minDate, todayDate) => {
   if (minDate && todayDate) {
     let yearOptions = [];
@@ -184,7 +178,6 @@ const RightSideComponent = (props) => {
             />
           </div>
         </div>
-        <StationClassifier>관측지점 분류</StationClassifier>
       </div>
       <div className="button-area box">
         <ul className="btn-list">
