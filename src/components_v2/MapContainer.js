@@ -20,7 +20,13 @@ const Wrapper = styled.div`
 `;
 
 const MapContainer = (props) => {
-  const { targetProvince, totalSpots, selectedFbOption, selectSpot } = props;
+  const {
+    targetProvince,
+    totalSpots,
+    selectedFbOption,
+    selectSpot,
+    selectedStationType,
+  } = props;
 
   const mapUrls = {
     base: "https://xdworld.vworld.kr/2d/Base/201612/{z}/{x}/{y}.png",
@@ -54,29 +60,37 @@ const MapContainer = (props) => {
         ></ScaleControl>
         <TileLayer url={mapUrls.satellite} attribution="VWORLD" />
         <WMSTileLayer url={mapUrls.hybrid} />
-        {selectedFbOption && totalSpots
-          ? totalSpots.map((spot) => (
-              <Marker
-                onclick={() => {
-                  selectSpot(spot);
-                }}
-                key={spot.id}
-                position={[spot["lat"], spot["lon"]]}
-                icon={divIcon({
-                  className: "",
-                  iconSize: [24, 24],
-                  html: `<div style="background:${
-                    spot[selectedFbOption.title]["color"]
-                      ? spot[selectedFbOption.title]["color"]
-                      : "white"
-                  }; opacity: 0.8; height:24px; border-radius:50%;"><div/>`,
-                })}
-              >
-                <Tooltip>{`${spot.stationName ? spot.stationName : "-"}(${
-                  spot.stationCode ? spot.stationCode : "-"
-                }: ${spot.stationType ? spot.stationType : "-"})`}</Tooltip>
-              </Marker>
-            ))
+        {selectedFbOption && totalSpots && selectedStationType
+          ? totalSpots
+              .filter((item) => {
+                if (selectedStationType.id == 1) {
+                  return true;
+                } else {
+                  return selectedStationType.typeName == item.stationType;
+                }
+              })
+              .map((spot) => (
+                <Marker
+                  onclick={() => {
+                    selectSpot(spot);
+                  }}
+                  key={spot.id}
+                  position={[spot["lat"], spot["lon"]]}
+                  icon={divIcon({
+                    className: "",
+                    iconSize: [24, 24],
+                    html: `<div style="background:${
+                      spot[selectedFbOption.title]["color"]
+                        ? spot[selectedFbOption.title]["color"]
+                        : "white"
+                    }; opacity: 0.8; height:24px; border-radius:50%;"><div/>`,
+                  })}
+                >
+                  <Tooltip>{`${spot.stationName ? spot.stationName : "-"}(${
+                    spot.stationCode ? spot.stationCode : "-"
+                  }: ${spot.stationType ? spot.stationType : "-"})`}</Tooltip>
+                </Marker>
+              ))
           : null}
       </Map>
     </Wrapper>

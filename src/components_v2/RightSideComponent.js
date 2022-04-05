@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { targetCrops, fireblightStatus } from "../data/fireblightOptionData";
-import { provinces } from "../data/provinces";
 import LegendComponent from "../components_v2/LegendComponent";
 import MapContainer from "./MapContainer";
+import { targetCrops, fireblightStatus } from "../data/fireblightOptionData";
+import { provinces } from "../data/provinces";
+import { stationTypes } from "../data/stationOptionData";
 import { getFBSpots } from "../context/api";
 
 const getYearOptions = (minDate, todayDate) => {
@@ -47,6 +48,9 @@ const RightSideComponent = (props) => {
   const [yearOptions, setYearOptions] = useState([]);
   const [selectedFbOption, setSelectedFbOption] = useState(fireblightStatus[0]);
   const [isButtonClicked, setIsButtonClicked] = useState(false);
+  const [selectedStationType, setSelectedStationType] = useState(
+    stationTypes[0]
+  );
 
   const onChangeTargetCrop = (e) => {
     const cropId = e.target.value;
@@ -79,6 +83,16 @@ const RightSideComponent = (props) => {
 
   const onChangeTargetDate = (e) => {
     setTargetDate(e.target.value);
+  };
+
+  const onChangeSelectedStationType = (e) => {
+    const stationTypeId = e.target.value;
+    const targetStationType = stationTypes.filter(
+      (item) => item.id == stationTypeId
+    )[0];
+    if (targetStationType) {
+      setSelectedStationType(targetStationType);
+    }
   };
 
   useEffect(() => {
@@ -133,31 +147,47 @@ const RightSideComponent = (props) => {
             </select>
           </div>
         </div>
-        <button
-          type="button"
-          className="btn"
-          onClick={() => {
-            onClickRefreshButton();
-            setIsButtonClicked(!isButtonClicked);
-          }}
-        >
-          {isButtonClicked
-            ? `자동 새로고침 중지 (마지막 업데이트: ${
-                nowDateTime
-                  ? `${nowDateTime.toISOString().slice(0, 10)} ${nowDateTime
-                      .getHours()
-                      .toString()
-                      .padStart(2, "0")}:${nowDateTime
-                      .getMinutes()
-                      .toString()
-                      .padStart(2, "0")}:${nowDateTime
-                      .getSeconds()
-                      .toString()
-                      .padStart(2, "0")}`
-                  : "-"
-              })`
-            : "자동 새로고침 (1시간 간격)"}
-        </button>
+        <div className="form-inline box">
+          <label htmlFor="stationTypeSelector">관측지점 타입 분류</label>
+          <select
+            id="stationTypeSelector"
+            className="form"
+            onChange={onChangeSelectedStationType}
+          >
+            {stationTypes.map((stationType) => (
+              <option key={stationType.id} value={stationType.id}>
+                {stationType.typeName ? stationType.typeName : "-"}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="form-inline box">
+          <button
+            type="button"
+            className="btn"
+            onClick={() => {
+              onClickRefreshButton();
+              setIsButtonClicked(!isButtonClicked);
+            }}
+          >
+            {isButtonClicked
+              ? `자동 새로고침 중지 (마지막 업데이트: ${
+                  nowDateTime
+                    ? `${nowDateTime.toISOString().slice(0, 10)} ${nowDateTime
+                        .getHours()
+                        .toString()
+                        .padStart(2, "0")}:${nowDateTime
+                        .getMinutes()
+                        .toString()
+                        .padStart(2, "0")}:${nowDateTime
+                        .getSeconds()
+                        .toString()
+                        .padStart(2, "0")}`
+                    : "-"
+                })`
+              : "자동 새로고침 (1시간 간격)"}
+          </button>
+        </div>
       </div>
       <div className="select-area position-2">
         <div className="form-inline box">
@@ -216,6 +246,7 @@ const RightSideComponent = (props) => {
           totalSpots={totalSpots}
           selectedFbOption={selectedFbOption}
           selectSpot={selectSpot}
+          selectedStationType={selectedStationType}
         />
       </div>
     </div>
