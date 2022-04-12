@@ -9,10 +9,12 @@ import {
   // Popup,
   ScaleControl,
   ZoomControl,
+  GeoJSON,
 } from "react-leaflet";
 import styled from "styled-components";
 
 import "./MapContainer.css";
+import KOREA_MAP from "../data/map/KOREAMAP-V1.json";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -92,6 +94,17 @@ const MapContainer = (props) => {
                 </Marker>
               ))
           : null}
+        <GeoJSON
+          // onclick={() => {
+          //   console.log("geojsonclick!!");
+          // }}
+          color={"black"}
+          weight={2}
+          opacity={0.5}
+          fillColor={"white"}
+          // fillOpacity={0.01}
+          data={KOREA_MAP}
+        />
       </Map>
     </Wrapper>
   );
