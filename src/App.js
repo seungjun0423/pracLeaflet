@@ -63,7 +63,7 @@ function App() {
   const maxDayCountAfterToday = 2;
   const today = new Date();
 
-  const minDate = new Date("2021-01-01");
+  const minDate = new Date("2018-01-01");
   const maxDate = new Date().setDate(today.getDate() + maxDayCountAfterToday);
   // const mapComponentRef = React.createRef();
 

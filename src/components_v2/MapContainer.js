@@ -14,7 +14,7 @@ import {
 import styled from "styled-components";
 
 import "./MapContainer.css";
-import KOREA_MAP from "../data/map/KOREAMAP-V1.json";
+import KOREA_MAP from "../data/map/KOREA-MAP-V3.json";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -40,6 +40,19 @@ const MapContainer = (props) => {
   //   setMarker(e.latlng);
   // };
 
+  const onEachFeature = (feature, layer) => {
+    layer.on({
+      mouseover: () => {
+        console.log("mouseover");
+      },
+      mouseout: () => {
+        console.log("mouseout");
+      },
+      click: () => {
+        console.log("click");
+      },
+    });
+  };
   return (
     <Wrapper>
       <Map
@@ -104,6 +117,8 @@ const MapContainer = (props) => {
           fillColor={"white"}
           // fillOpacity={0.01}
           data={KOREA_MAP}
+          onEachFeature={onEachFeature}
+          // data={JEK_MAP}
         />
       </Map>
     </Wrapper>
