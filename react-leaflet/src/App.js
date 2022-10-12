@@ -1,8 +1,11 @@
+import { Fragment } from 'react';
+import Maps from '../src/modules/Maps'
 
 function App() {
   return (
-    <div >
-    </div>
+    <Fragment>
+      <Maps></Maps>
+    </Fragment>
   );
 }
 
