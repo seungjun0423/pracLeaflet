@@ -1,5 +1,5 @@
 import React ,{ Fragment } from 'react';
-import Maps from '../src/modules/Maps'
+import Maps from './component/Maps'
 
 function App() {
   return (
