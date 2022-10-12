@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { divIcon} from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
 
 
@@ -11,7 +12,7 @@ const Maps=()=>{
         <TileLayer 
           url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
         />
-        <Marker position={[36,129]}>
+        <Marker position={[36,129]} icon={divIcon({})}>
           <Popup>
             ok
           </Popup>
