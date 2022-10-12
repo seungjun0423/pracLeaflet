@@ -1,21 +1,31 @@
-import React,{Component, useState,useEffect,useRef, Fragment} from 'react';
-import { MapContainer, TileLayer, useMap,Marker, Popup} from 'react-leaflet';
+import React, { Component } from 'react';
+import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
 
-import "../modules/Map.css"
 
-const Maps = () =>{
-  const [state, setstate] = useState({'lat':51,'lon':10,'zoom':13});
 
-  return(
-    <Fragment>
-      <MapContainer center={[35.9078,128.9]} zoom={13} scrollWheelZoom={false}>
-        <TileLayer 
-          url="https://xdworld.vworld.kr/2d/hybrid/201612/{z}/{x}/{y}/jpeg" 
-        />
-        <Marker position={[35.9078,128.9]}>
-        </Marker>
-      </MapContainer>
-    </Fragment>
-  )
+
+class Maps extends Component {
+  constructor(){
+    super();
+    this.state={
+      lat: 51.505,
+      lng: 10,
+      zoom:13,
+    }
+  }
+  render(){
+    const position =[this.state.lat,this.state.lng];
+    return(
+      <div>
+        <MapContainer style={{height:"100vh"}} center={position} zoom={this.state.zoom}>
+          <TileLayer 
+            url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
+          />
+  
+        </MapContainer>
+      </div>
+    )
+  }
 }
-export default Maps
+
+export default Maps;
