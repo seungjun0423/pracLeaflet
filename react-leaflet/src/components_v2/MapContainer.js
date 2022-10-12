@@ -1,7 +1,7 @@
 import React from "react";
 import { divIcon } from "leaflet";
 import {
-  Map,
+  MapContainer,
   TileLayer,
   WMSTileLayer,
   Marker,
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
-const MapContainer = (props) => {
+const Map = (props) => {
   const {
     targetProvince,
     totalSpots,
@@ -55,7 +55,7 @@ const MapContainer = (props) => {
   };
   return (
     <Wrapper>
-      <Map
+      <MapContainer
         center={
           targetProvince && targetProvince.center
             ? [targetProvince.center.lat, targetProvince.center.lon]
@@ -120,7 +120,7 @@ const MapContainer = (props) => {
           onEachFeature={onEachFeature}
           // data={JEK_MAP}
         />
-      </Map>
+      </MapContainer>
     </Wrapper>
   );
 };

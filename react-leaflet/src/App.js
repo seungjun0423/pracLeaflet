@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import ResizePanel from "react-resize-panel";
 import styled from "styled-components";
 
 import { provinces } from "./data/provinces";
@@ -127,7 +126,6 @@ function App() {
         {/* <div className="flex-box"> */}
         <ContentsWrapper>
           {/* <div className="flex-body"> */}
-          <ResizePanel direction="e" style={{ zIndex: 2 }}>
             <LeftContentsWrapper>
               {/* <div className="flex-left"> */}
               <LeftSideComponent
@@ -143,7 +141,6 @@ function App() {
                 nowDateTime={nowDateTime}
               />
             </LeftContentsWrapper>
-          </ResizePanel>
           <RightContentsWrapper>
             {/* <div className="flex-right"> */}
             <RightSideComponent
