@@ -13,7 +13,7 @@ import {
 } from "react-leaflet";
 import styled from "styled-components";
 
-import "./MapContainer.css";
+import "./Maps.css";
 import KOREA_MAP from "../data/map/KOREA-MAP-V3.json";
 
 const Wrapper = styled.div`
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
-const Map = (props) => {
+const Maps= (props) => {
   const {
     targetProvince,
     totalSpots,
@@ -125,4 +125,4 @@ const Map = (props) => {
   );
 };
 
-export default MapContainer;
+export default Maps;

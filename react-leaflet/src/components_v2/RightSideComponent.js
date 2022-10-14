@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import LegendComponent from "../components_v2/LegendComponent";
-import MapContainer from "./MapContainer";
+import LegendComponent from "./LegendComponent";
+import Maps from "./Maps";
 import { targetCrops, fireblightStatus } from "../data/fireblightOptionData";
 import { provinces } from "../data/provinces";
 import { stationTypes } from "../data/stationOptionData";
@@ -246,7 +246,7 @@ const RightSideComponent = (props) => {
         />
       </div>
       <div className="map">
-        <MapContainer
+        <Maps
           targetProvince={targetProvince}
           totalSpots={totalSpots}
           selectedFbOption={selectedFbOption}
